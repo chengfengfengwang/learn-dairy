@@ -20,3 +20,14 @@
 
     SELECT * FROM students WHERE score >= 80 。WHERE关键字后面的score >= 80就是条件。score是列名，该列存储了学生的成绩，因此，score >= 80就筛选出了指定条件的记录
 
+    投影查询：SELECT *表示查询表的所有列，使用SELECT 列1, 列2, 列3则可以仅返回指定列。
+    使用SELECT 列1, 列2, 列3 FROM ...时，还可以给每一列起个别名，这样，结果集的列名就可以与原表的列名不同。它的语法是SELECT 列1 别名1, 列2 别名2, 列3 别名3 FROM ...。
+
+    分页：使用LIMIT <M> OFFSET <N>可以对结果集进行分页，每次查询返回结果集的一部分；
+    LIMIT总是设定为pageSize；
+    OFFSET计算公式为pageSize * (pageIndex - 1)。
+    LIMIT表示最多查询多少条，OFFSET表示从几号记录开始(0为第一项纪录)
+    
+
+
+
