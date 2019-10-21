@@ -74,7 +74,7 @@
     外连接（OUTER JOIN）
     RIGHT OUTER JOIN返回右表都存在的行。如果某一行仅在右表存在，那么结果集就会以NULL填充剩下的字段。
     LEFT OUTER JOIN则返回左表都存在的行
-    
+
     场景：两个表 students 和 classes,students表只存了class_id，需要根据students表的class_id，找到classes表对应的班级名称
     SELECT s.id, s.name, s.class_id, c.name class_name, s.gender, s.score
     FROM students s
@@ -85,6 +85,46 @@
     再确定需要连接的表，使用INNER JOIN <表2>的语法；
     然后确定连接条件，使用ON <条件...>，这里的条件是s.class_id = c.id，表示students表的class_id列与classes表的id列相同的行需要连接；
     可选：加上WHERE子句、ORDER BY等子句。
+
+    插入：
+    INSERT INTO <表名> (字段1, 字段2, ...) VALUES (值1, 值2, ...);
+    INSERT INTO students (class_id, name, gender, score) VALUES (2, '大牛嗷嗷', 'M', 80);//插入一条数据
+    INSERT INTO students (class_id, name, gender, score) VALUES (1, '大宝', 'M', 87),(2, '二宝', 'M', 81); //一次插入多条数据
+
+    更新：
+    UPDATE <表名> SET 字段1=值1, 字段2=值2, ... WHERE ...;
+    UPDATE students SET name='大牛', score=67 WHERE id=1;//更新students表id=1的记录的name和score这两个字段
+    UPDATE students SET score=score+10 WHERE score<80;//使用表达式，更新多条记录
+    UPDATE语句可以没有WHERE条件，这时整个表的所有记录都会被更新
+
+    删除：
+    DELETE FROM <表名> WHERE ...;
+    DELETE FROM students WHERE id=1;//删除students表中id=1的记录
+    DELETE FROM students WHERE id>=5 AND id<=7;//一次删除多条记录
+    如果WHERE条件没有匹配到任何记录，DELETE语句不会报错，也不会有任何记录被删除。
+    和UPDATE类似，不带WHERE条件的DELETE语句会删除整个表的数据
+
+    MySQL
+    安装完MySQL后，除了MySQL Server，即真正的MySQL服务器外，还附赠一个MySQL Client程序。
+    命令行程序mysql实际上是MySQL客户端。在MySQL Client中输入的SQL语句通过TCP连接发送到MySQL Server
+    mysql -h 10.0.1.99 -u root -p //连接远程mysql server -h指定IP或域名
+    使用EXIT命令退出MySQL,断开了客户端和服务器的连接，MySQL服务器仍然继续运行
+
+    本地连接mysql: mysql -u root -p
+    列出所有数据库：SHOW DATABASES; //information_schema、mysql、performance_schema和sys是系统库，不要去改动它们
+    创建一个新数据库 CREATE DATABASE test;
+    删除一个数据库   DROP DATABASE test;
+    对一个数据库进行操作时，要首先将其切换为当前数据库：USE test;
+
+    列出当前数据库的所有表：SHOW TABLES;
+    创建表: CREATE TABLE <table name>;
+    删除表: DROP TABLE <table name>;
+    查看表结构: DESC <table name>; //describe table 
+
+
+    
+
+
 
 
 
