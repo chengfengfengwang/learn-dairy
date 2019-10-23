@@ -121,7 +121,10 @@
     删除表: DROP TABLE <table name>;
     查看表结构: DESC <table name>; //describe table 
 
+    sql事务：把多条语句作为一个整体进行操作要么全成功，要么全失败，被称为数据库事务
 
+访问MySQL数据库只有一种方法，就是通过网络发送SQL命令，然后，MySQL服务器执行后返回结果。
+对于Node.js程序，访问MySQL也是通过网络发送SQL命令给MySQL服务器。这个访问MySQL服务器的软件包通常称为MySQL驱动程序
     
 
 
