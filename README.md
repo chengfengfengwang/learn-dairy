@@ -125,6 +125,26 @@
 
 访问MySQL数据库只有一种方法，就是通过网络发送SQL命令，然后，MySQL服务器执行后返回结果。
 对于Node.js程序，访问MySQL也是通过网络发送SQL命令给MySQL服务器。这个访问MySQL服务器的软件包通常称为MySQL驱动程序
+
+#canvas
+    Canvas 是为了解决 Web 页面中只能显示静态图片这个问题而提出的，一个可以使用 JavaScript 等脚本语言向其中绘制图像的 HTML 标签。
+    svg（Scalable Vector Graphics，可缩放矢量图形）是基于 XML用于描述二维矢量图形的一种图形格式
+
+    canvas坐标：左上角（坐标为（0,0））所有元素的位置都相对于原点定位
+    canvas可以使用CSS来定义大小，但在绘制时图像会伸缩以适应它的框架尺寸：如果CSS的尺寸与初始画布的比例不一致，它会出现扭曲
+    尽量使用 HTML 的width 和 height 属性或者直接使用 JS 动态来设置宽高，不要使用 CSS 设置。
+
+    canvas绘图的步骤：
+    beginPath()/开始一个路径 绘制路径 closePath()/关闭路径 设置填充颜色或描边颜色 填充颜色或描边
+
+    画一个弧形：ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise);startAngle圆弧的起始点， x轴方向开始计算，单位以弧度表示
+    弧度公式：degrees*Math.PI/180 举例：如需旋转 5 度，可使用下面的公式：5*Math.PI/180
+
+    如果没有 moveTo，那么第一次 lineTo 的就视为 moveTo每次 lineTo 后如果没有 moveTo，那么下次 lineTo 的开始点为前一次 lineTo 的结束点。
+    线性渐变：var gradient = ctx.createLinearGradient(0,0,200,0);使用 createLinearGradient 方法创建一个指定了开始和结束点的CanvasGradient 对象。创建成功后， 你就可以使用 CanvasGradient.addColorStop() 方法，根据指定的偏移和颜色定义一个新的终止
+
+    
+
     
 
 
