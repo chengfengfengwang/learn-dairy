@@ -142,9 +142,36 @@
 
     如果没有 moveTo，那么第一次 lineTo 的就视为 moveTo每次 lineTo 后如果没有 moveTo，那么下次 lineTo 的开始点为前一次 lineTo 的结束点。
     线性渐变：var gradient = ctx.createLinearGradient(0,0,200,0);使用 createLinearGradient 方法创建一个指定了开始和结束点的CanvasGradient 对象。创建成功后， 你就可以使用 CanvasGradient.addColorStop() 方法，根据指定的偏移和颜色定义一个新的终止
+#svg
+svg标签上应该有version、baseProfile、xmlns(命名空间)
+#koa
+中间件：它处在 HTTP Request 和 HTTP Response 中间，用来实现某种中间功能。app.use()用来加载中间件。
+下面的logger就是一个中间件。基本上，Koa 所有的功能都是通过中间件实现的，前面例子里面的main也是中间件。每个中间件默认接受两个参数，第一个参数是 Context 对象，第二个参数是next函数。只要调用next函数，就可以把执行权转交给下一个中间件。
+```
+const logger = (ctx, next) => {
+  console.log(`${Date.now()} ${ctx.request.method} ${ctx.request.url}`);
+  next();
+}
 
-    
+const main = ctx => {
+  ctx.response.body = 'Hello World';
+};
 
+app.use(logger);
+app.use(main);
+```
+中间件栈：
+多个中间件会形成一个栈结构。
+最外层的中间件首先执行。
+调用next函数，把执行权交给下一个中间件。
+...
+最内层的中间件最后执行。
+执行结束后，把执行权交回上一层的中间件。
+...
+最外层的中间件收回执行权之后，执行next函数后面的代码。
+
+异步中间件：
+如果有异步操作（比如读取数据库），中间件就必须写成 async 函数。
     
 
 
