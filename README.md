@@ -198,7 +198,16 @@ var xiaoming = new Student({name:'xiaoming'})
 xiaoming.__proto__ === Student.prototype //true
 所有的函数会有一个特别的属性 —— prototype
 
+# npm
+require一个包，就是require package.json的main入口文件
+npm whoami 可以查看当前登录用户
+npm publish 会发布package.json所在目录的所有文件
 
+npm run新建的这个 Shell，会将当前目录的node_modules/.bin子目录加入PATH变量，执行结束后，再将PATH变量恢复原样。
+这意味着，当前目录的node_modules/.bin子目录里面的所有脚本，都可以直接用脚本名调用，而不必加上路径。比如，当前项目的依赖里面有 Mocha，只要直接写mocha test就可以了。"test": "mocha test"
+
+如果是并行执行（即同时的平行执行），可以使用&符号。
+如果是继发执行（即只有前一个任务成功，才执行下一个任务），可以使用&&符号。
 
     
     
