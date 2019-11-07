@@ -178,10 +178,25 @@ await 求值关键字、有阻塞线程的作用
 为了保证洋葱模型的执行顺序，必须在异步函数和next()前加上await
 洋葱模型的存在保证了代码的有序执行，不至于异步混乱
 
+由于Node环境执行的JavaScript代码是服务器端代码，所以，绝大部分需要在服务器运行期反复执行业务逻辑的代码，必须使用异步代码，否则，同步代码在执行时期，服务器将停止响应，因为JavaScript只有一个执行线程。
 
+mz模块可以让nodejs的异步操作返回一个promise，可以方便地适用async await写法
 
+# 面向对象
+类是对象的类型模板，实例是根据类创建的对象；类和实例是大多数面向对象编程语言的基本概念
+JavaScript不区分类和实例的概念，而是通过原型（prototype）来实现面向对象编程,在 ES2015/ES6 中引入了 class 关键字，但那只是语法糖，JavaScript 仍然是基于原型的
 
+JavaScript 对象有一个指向一个原型对象的链。当试图访问一个对象的属性时，它不仅仅在该对象上搜寻，还会搜寻该对象的原型，以及该对象的原型的原型，依次层层向上搜索，直到找到一个名字匹配的属性或到达原型链的末尾。
 
+function Student(prop){
+    this.name = prop.name || 'unname'
+}
+Student.prototype.hello= function(){
+    console.log('hello ' + this.name)
+}
+var xiaoming = new Student({name:'xiaoming'})
+xiaoming.__proto__ === Student.prototype //true
+所有的函数会有一个特别的属性 —— prototype
 
 
 
