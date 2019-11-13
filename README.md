@@ -209,8 +209,13 @@ npm run新建的这个 Shell，会将当前目录的node_modules/.bin子目录�
 如果是并行执行（即同时的平行执行），可以使用&符号。
 如果是继发执行（即只有前一个任务成功，才执行下一个任务），可以使用&&符号。
 
-    
-    
+# koa
+ctx.path 和 ctx.method等价于 ctx.request.path和ctx.request.method
+使用ctx.body返回
 
-
-
+不要在低级模块里引用高级模块
+# git
+git pull命令相当于git fetch远程仓库，取下来之后再进行merge操作
+1.你和别人同时开发，当别人做了几次commit并且推送到了远程仓库
+2.你做了几次commit，当你准备推到远程时，发现git提醒你先要git pull
+3.这时的pull会要求你填写合并信息，因为git发现本地少了几个远端的commit，远端也没有本地的commit
