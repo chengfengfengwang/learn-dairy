@@ -219,3 +219,9 @@ git pull命令相当于git fetch远程仓库，取下来之后再进行merge操�
 1.你和别人同时开发，当别人做了几次commit并且推送到了远程仓库
 2.你做了几次commit，当你准备推到远程时，发现git提醒你先要git pull
 3.这时的pull会要求你填写合并信息，因为git发现本地少了几个远端的commit，远端也没有本地的commit
+
+git push是把当前本地branch的所有commit提交到远程仓库
+如果branch是自己创建的，需要指定仓库名和分支名
+
+merge是从两个commit的分叉位置起，把目标commit内容应用到当前commit，并且生成一个新的commit
+git merge --abort取消合并
