@@ -243,3 +243,14 @@ select vendor_name, product_name, product_price from vendors, products where ven
 在联结两个表时，实际上是将第一个表中的每一行与第二个表中的每一行进行配对，where子句是执行配对时的过滤条件。
 也被称为内联结；
 select vendor_name, product_name, product_price from vendors inner join products on vendors.vendor_id = products.vendor_id;
+
+使用外联结的情况一：
+有用户表和订单表，统计每个用户的订单情况。
+select customers.cust_name,orders.order_date,orders.order_num from customers left outer join  orders on customers.cust_id=orders.cust_id;
+将用户表和订单表外联结，返回所有用户的订单情况，包括没有订单的用户
+
+//查看数据库管理系统的编码
+show variables like '%char%'; 
+//设置编码
+set character_set_server=utf8;
+set character_set_database=utf8;
