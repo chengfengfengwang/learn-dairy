@@ -235,3 +235,11 @@ git push是把当前本地branch的所有commit提交到远程仓库
 
 merge是从两个commit的分叉位置起，把目标commit内容应用到当前commit，并且生成一个新的commit
 git merge --abort取消合并
+
+# 数据库连结
+使用内联结的情况一：
+需要将商品表中的厂商id扩展成详细厂商信息，商品表中有厂商id，厂商信息存储在厂商表中；
+select vendor_name, product_name, product_price from vendors, products where vendors.vendor_id = products.vendor_id;
+在联结两个表时，实际上是将第一个表中的每一行与第二个表中的每一行进行配对，where子句是执行配对时的过滤条件。
+也被称为内联结；
+select vendor_name, product_name, product_price from vendors inner join products on vendors.vendor_id = products.vendor_id;
