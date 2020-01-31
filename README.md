@@ -163,7 +163,7 @@ app.use(main);
 中间件栈：
 多个中间件会形成一个栈结构。
 最外层的中间件首先执行。
-调用next函数，把执行权交给下一个中间件。
+当中间件调用next（）时，函数将挂起并将控制权传递给定义的下一个中间件.
 ...
 最内层的中间件最后执行。
 执行结束后，把执行权交回上一层的中间件。
@@ -225,3 +225,6 @@ git push是把当前本地branch的所有commit提交到远程仓库
 
 merge是从两个commit的分叉位置起，把目标commit内容应用到当前commit，并且生成一个新的commit
 git merge --abort取消合并
+
+# koa
+A Context is created per request, and is referenced in middleware as the receiver, or the ctx identifier
