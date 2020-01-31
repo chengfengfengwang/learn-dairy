@@ -10,6 +10,16 @@
     外部文件拖到浏览器会打开该资源，需要在document ondragover上preventDefault
 
 # mysql
+    1、显示数据库列表。 
+    show databases; 
+    2、显示库中的数据表： 
+    show tables; 
+    3、显示数据表的结构： 
+    describe 表名; 
+    4、select database()
+    查看当前所在数据库
+    5、执行数据库脚本
+    登录到数据库 source + .sql文件的路径
     主键：对于关系表，有个很重要的约束，就是任意两条记录不能重复，指能够通过某个字段唯一区分出不同的记录，这个字段被称为主键。选取主键的一个基本原则是：不使用任何业务相关的字段作为主键。我们一般把这个字段命名为id。常见的可作为id字段的类型有：自增整数类型、全局唯一GUID类型。主键也不应该允许NULL。
 
     外键：通过定义外键约束，关系数据库可以保证无法插入无效的数据。即如果classes表不存在id=99的记录，students表就无法插入class_id=99的记录
@@ -228,3 +238,21 @@ git merge --abort取消合并
 
 # koa
 A Context is created per request, and is referenced in middleware as the receiver, or the ctx identifier
+# 数据库连结
+使用内联结的情况一：
+需要将商品表中的厂商id扩展成详细厂商信息，商品表中有厂商id，厂商信息存储在厂商表中；
+select vendor_name, product_name, product_price from vendors, products where vendors.vendor_id = products.vendor_id;
+在联结两个表时，实际上是将第一个表中的每一行与第二个表中的每一行进行配对，where子句是执行配对时的过滤条件。
+也被称为内联结；
+select vendor_name, product_name, product_price from vendors inner join products on vendors.vendor_id = products.vendor_id;
+
+使用外联结的情况一：
+有用户表和订单表，统计每个用户的订单情况。
+select customers.cust_name,orders.order_date,orders.order_num from customers left outer join  orders on customers.cust_id=orders.cust_id;
+将用户表和订单表外联结，返回所有用户的订单情况，包括没有订单的用户
+
+//查看数据库管理系统的编码
+show variables like '%char%'; 
+//设置编码
+set character_set_server=utf8;
+set character_set_database=utf8;
