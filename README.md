@@ -256,3 +256,15 @@ show variables like '%char%';
 //设置编码
 set character_set_server=utf8;
 set character_set_database=utf8;
+
+# mysql测试题
+1. 列出所有商品的商品名称、价格、厂商名称
+2. 列出订单20005的所有商品，包括商品名称、商品价格、商品购买数量、厂商名称
+3. 把厂商表中的厂商名称和厂商国家，中间用--连接返回
+4. 找出所有购买TNT2商品的所有顾客的名字和email
+5. 找出生产TNT2厂家的所产品
+   select prod_name,vend_id from products where vend_id=(select vend_id from products where prod_id='TNT2');
+6. 列出所有顾客的订单，只包括有数据的
+    select order_num,customers.cust_id,cust_name,count(customers.cust_id)as order_count from orders inner join customers on customers.cust_id = orders.cust_id group by customers.cust_id;
+7. 列出所有顾客的订单，包括没数据的
+    select order_num,customers.cust_id,cust_name,count(orders.order_num)as order_count from customers left outer join orders on customers.cust_id = orders.cust_id group by customers.cust_id;
